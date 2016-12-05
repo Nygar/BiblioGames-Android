@@ -4,8 +4,10 @@
     //SharesPreferences
     <string name="file">sharesPreferencesFile</string>
     <string name="current_user">current_user</string>
+
     //Base URL
     <string name="base_url_images">http://nygar.esy.es/biblioGames/uploadIMG/</string>
+
     //GenericString
     <string name="ok">Continuar</string>
     <string name="cancel">Cancelar</string>
@@ -47,4 +49,7 @@
 
     //Console
     <string name="no_console">Consola No Disponible</string>
+
+    //Graphics
+    <string name="graphic_total">Total Gastado</string>
 </resources>

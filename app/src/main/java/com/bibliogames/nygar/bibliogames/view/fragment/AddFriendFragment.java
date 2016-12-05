@@ -2,7 +2,6 @@ package com.bibliogames.nygar.bibliogames.view.fragment;
 
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -91,30 +90,21 @@ public class AddFriendFragment extends Fragment implements GetNoFriendsServiceIn
         recyclerView.setAdapter(adapter);
     }
 
-    AddFriendsAdapter.OnItemClickListener  onItemClickListener= new AddFriendsAdapter.OnItemClickListener() {
-        @Override
-        public void onItemClick(User sUser) {
-            final User sUseraux=sUser;
-            //Instantiate an AlertDialog.Builder
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+    AddFriendsAdapter.OnItemClickListener  onItemClickListener= sUser -> {
+        final User sUseraux=sUser;
+        //Instantiate an AlertDialog.Builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-            builder.setMessage(R.string.add_friends_dialog_message)
-                    .setTitle(R.string.add_friends_dialog_title);
+        builder.setMessage(R.string.add_friends_dialog_message)
+                .setTitle(R.string.add_friends_dialog_title);
 
-            builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    addFriend(sUseraux.getId());
-                    dialog.dismiss();
-                }
-            });
-            builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    dialog.dismiss();
-                }
-            });
-            AlertDialog dialog = builder.create();
-            dialog.show();
-        }
+        builder.setPositiveButton(R.string.ok, (dialog, id) -> {
+            addFriend(sUseraux.getId());
+            dialog.dismiss();
+        });
+        builder.setNegativeButton(R.string.cancel, (dialog, id) -> dialog.dismiss());
+        AlertDialog dialog = builder.create();
+        dialog.show();
     };
 
     /**

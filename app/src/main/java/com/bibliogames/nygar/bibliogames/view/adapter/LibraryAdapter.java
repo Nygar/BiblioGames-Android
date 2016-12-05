@@ -16,7 +16,6 @@ import com.daimajia.swipe.SwipeLayout;
 import com.squareup.picasso.Picasso;
 import com.vipul.hp_hp.timelineview.TimelineView;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import butterknife.BindString;
@@ -70,19 +69,9 @@ public class LibraryAdapter extends RecyclerView.Adapter<LibraryAdapter.ViewHold
                 .placeholder(R.drawable.default_game).fit().centerInside().into(holder.avatar);
 
         //OnClickListeners
-        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onItemClickListener.onDelete(selectedGame);
-            }
-        });
+        holder.deleteButton.setOnClickListener(v -> onItemClickListener.onDelete(selectedGame));
 
-        holder.editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onItemClickListener.onEdit(selectedGame);
-            }
-        });
+        holder.editButton.setOnClickListener(v -> onItemClickListener.onEdit(selectedGame));
     }
 
     @Override

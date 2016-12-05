@@ -48,7 +48,6 @@ public class RegistrationFragment extends Fragment implements RegisterServiceInt
     String noSamePassString;
 
     //Propiedades
-    private View view;
     private LoginActivityInterface loginActivityInterface;
 
     //Constructor
@@ -73,7 +72,7 @@ public class RegistrationFragment extends Fragment implements RegisterServiceInt
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view=inflater.inflate(R.layout.fragment_registration, container, false);
+        View view=inflater.inflate(R.layout.fragment_registration, container, false);
         ButterKnife.bind(this,view);
 
         return view;

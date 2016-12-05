@@ -128,24 +128,21 @@ public class MainActivity extends BaseActivity implements MainActivityInterface,
         bottomNavigationView.disableShadow();
         bottomNavigationView.selectTab(0);
 
-        bottomNavigationView.setOnBottomNavigationItemClickListener(new OnBottomNavigationItemClickListener() {
-            @Override
-            public void onNavigationItemClick(int index) {
-                Log.d("ItemSelected"," "+index);
-                switch(index){
-                    case 0:
-                        replaceFragment(R.id.mainFragmentContainer, currentLibrary);
-                        break;
-                    case 1:
-                        replaceFragment(R.id.mainFragmentContainer, currentFriend);
-                        break;
-                    case 2:
-                        replaceFragment(R.id.mainFragmentContainer, currentGraphic);
-                        break;
-                    case 3:
-                        replaceFragment(R.id.mainFragmentContainer, currentProfile);
-                        break;
-                }
+        bottomNavigationView.setOnBottomNavigationItemClickListener(index -> {
+            Log.d("ItemSelected"," "+index);
+            switch(index){
+                case 0:
+                    replaceFragment(R.id.mainFragmentContainer, currentLibrary);
+                    break;
+                case 1:
+                    replaceFragment(R.id.mainFragmentContainer, currentFriend);
+                    break;
+                case 2:
+                    replaceFragment(R.id.mainFragmentContainer, currentGraphic);
+                    break;
+                case 3:
+                    replaceFragment(R.id.mainFragmentContainer, currentProfile);
+                    break;
             }
         });
     }

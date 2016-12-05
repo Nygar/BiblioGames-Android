@@ -13,8 +13,6 @@ import android.widget.TextView;
 import com.bibliogames.nygar.bibliogames.R;
 import com.bibliogames.nygar.bibliogames.model.User;
 import com.daimajia.swipe.SwipeLayout;
-import com.squareup.picasso.MemoryPolicy;
-import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -64,19 +62,9 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
                 .placeholder(R.drawable.ic_defaultuser).fit().into(holder.avatar);
 
         //OnClickListeners
-        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onItemClickListener.onDelete(selectedUser);
-            }
-        });
+        holder.deleteButton.setOnClickListener(v -> onItemClickListener.onDelete(selectedUser));
 
-        holder.it.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onItemClickListener.onItemClick(selectedUser);
-            }
-        });
+        holder.it.setOnClickListener(v -> onItemClickListener.onItemClick(selectedUser));
     }
 
     @Override

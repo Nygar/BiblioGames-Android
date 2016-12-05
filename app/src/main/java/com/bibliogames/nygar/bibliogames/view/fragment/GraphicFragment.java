@@ -19,6 +19,8 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindColor;
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -31,6 +33,13 @@ public class GraphicFragment extends Fragment {
     PieChart chart;
     @BindView(R.id.textView_TotalGraphic)
     TextView tvTotal;
+
+    @BindString(R.string.graphic_total)
+    String graphicTotal;
+    @BindColor(R.color.transparent)
+    int chartBackgroundColor;
+    @BindColor(R.color.white)
+    int chartTextColor;
 
     private List<GraphicEntry> graphicEntries;
     private PieData data;
@@ -58,6 +67,8 @@ public class GraphicFragment extends Fragment {
         }
         addDataToGraphic(graphicEntries);
         chart.setDescription("");
+        chart.setHoleColor(chartBackgroundColor);
+        chart.setDrawCenterText(true);
         chart.animateXY(2000, 2000);
         chart.invalidate();
     }
@@ -71,7 +82,7 @@ public class GraphicFragment extends Fragment {
     }
 
     private void addDataToGraphic(List<GraphicEntry> list){
-        tvTotal.setText("Total Gastado "+ calculateTotal(list));
+        tvTotal.setText(graphicTotal+" "+ calculateTotal(list)+ " €");
 
         ArrayList<Entry> entries = new ArrayList<>();
         ArrayList<String> labels = new ArrayList<>();
@@ -85,6 +96,7 @@ public class GraphicFragment extends Fragment {
         PieDataSet dataSet = new PieDataSet(entries,""); // add entries to dataset
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         dataSet.setValueTextSize(16);
+        dataSet.setValueTextColor(chartTextColor);
 
         data = new PieData(labels,dataSet);
         chart.setData(data);

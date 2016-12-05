@@ -2,7 +2,6 @@ package com.bibliogames.nygar.bibliogames.view.fragment;
 
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,13 +18,10 @@ import com.bibliogames.nygar.bibliogames.presenter.serviceinterface.DeleteFriend
 import com.bibliogames.nygar.bibliogames.view.adapter.FriendsAdapter;
 import com.bibliogames.nygar.bibliogames.view.interfaces.MainActivityInterface;
 import com.bibliogames.nygar.bibliogames.view.utils.CustomSharedPreferences;
-import com.bluelinelabs.logansquare.LoganSquare;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

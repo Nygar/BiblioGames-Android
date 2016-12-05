@@ -13,7 +13,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -144,12 +143,7 @@ public class DetailsGamesFragment extends Fragment implements UpdateGameServiceI
             spinnerList.add(c.getName());
         }
         spinner.setItems(spinnerList);
-        spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
-                selectedConsoleSpinner = categoryConsole.get(position);
-            }
-        });
+        spinner.setOnItemSelectedListener((view, position, id, item) -> selectedConsoleSpinner = categoryConsole.get(position));
         spinner.setSelectedIndex(0);
         selectedConsoleSpinner= categoryConsole.get(0);
     }
@@ -193,14 +187,11 @@ public class DetailsGamesFragment extends Fragment implements UpdateGameServiceI
     public void textDateBuy(){
         final Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE,-1);
-        DatePickerDialog datePickerDialog= new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                tvDate.setText(dayOfMonth+"/"+monthOfYear+"/"+year);
+        DatePickerDialog datePickerDialog= new DatePickerDialog(getContext(), (view, year, monthOfYear, dayOfMonth) -> {
+            tvDate.setText(dayOfMonth+"/"+monthOfYear+"/"+year);
 
-                date.set(year,monthOfYear,dayOfMonth);
+            date.set(year,monthOfYear,dayOfMonth);
 
-            }
         },cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.getDatePicker().setMaxDate(Calendar.getInstance().getTimeInMillis());
         datePickerDialog.show();

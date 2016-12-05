@@ -102,22 +102,19 @@ public class LibraryFragment extends Fragment implements DeleteGameServiceInterf
             spinnerList.add(c.getName());
         }
         spinner.setItems(spinnerList);
-        spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
-                Console selectedConsole = categoryConsole.get(position);
+        spinner.setOnItemSelectedListener((view, position, id, item) -> {
+            Console selectedConsole = categoryConsole.get(position);
 
-                if(selectedConsole.getId()!=0){
-                    List<Games> filteredGames = new ArrayList<>();
-                    for(int i = 0;i<games.size();i++){
-                        if(games.get(i).getConsole()!=null && games.get(i).getConsole().equals(selectedConsole)){
-                            filteredGames.add(games.get(i));
-                        }
+            if(selectedConsole.getId()!=0){
+                List<Games> filteredGames = new ArrayList<>();
+                for(int i = 0;i<games.size();i++){
+                    if(games.get(i).getConsole()!=null && games.get(i).getConsole().equals(selectedConsole)){
+                        filteredGames.add(games.get(i));
                     }
-                    adapter.updateAdapter(filteredGames);
-                }else{
-                    adapter.updateAdapter(games);
                 }
+                adapter.updateAdapter(filteredGames);
+            }else{
+                adapter.updateAdapter(games);
             }
         });
 

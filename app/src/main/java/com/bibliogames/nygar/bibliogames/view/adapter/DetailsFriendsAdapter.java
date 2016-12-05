@@ -9,8 +9,6 @@ import android.widget.TextView;
 
 import com.bibliogames.nygar.bibliogames.R;
 import com.bibliogames.nygar.bibliogames.model.Games;
-import com.squareup.picasso.MemoryPolicy;
-import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 import com.vipul.hp_hp.timelineview.TimelineView;
 
