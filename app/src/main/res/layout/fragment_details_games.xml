@@ -1,0 +1,196 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.bibliogames.nygar.bibliogames.view.fragment.DetailsGamesFragment">
+
+        <include layout="@layout/view_toolbar_back" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--CoverGame-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="250dp"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/image_details_games_cover"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:minHeight="250dp"
+                            android:src="@color/backgroundDetailsGames" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:padding="15dp"
+                        >
+                    <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/details_games_fab"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_add_a_photo_white_24dp"
+                        />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <!--Form-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!--TextViewTittle-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:src="@drawable/ic_description_black_24dp" />
+
+                        <EditText
+                            android:id="@+id/details_games_editTextTitle"
+                            style="@style/customEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginRight="15dp"
+                            android:hint="@string/tittleGame"
+                            android:singleLine="true"
+                            />
+                    </LinearLayout>
+
+                    <!--TextView Shopping-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:src="@drawable/ic_shopping_cart_black_24dp" />
+
+                        <EditText
+                            android:id="@+id/details_games_editTextBuyPrice"
+                            style="@style/customEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginRight="15dp"
+                            android:hint="@string/buyPriceGame"
+                            android:inputType="numberDecimal"
+                            android:singleLine="true"/>
+                    </LinearLayout>
+
+                    <!--TextView Games-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginRight="15dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:src="@drawable/ic_videogame_asset_black_24dp" />
+
+                        <com.jaredrummler.materialspinner.MaterialSpinner
+                            android:id="@+id/spinner_detailsGames_consoleList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="5dp" />
+                    </LinearLayout>
+
+                    <!--TextView Calendar-->
+                    <LinearLayout
+                        android:id="@+id/layout_details_games_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:src="@drawable/ic_event_black_24dp" />
+
+                        <TextView
+                            android:id="@+id/details_games_editTextDateBuy"
+                            style="@style/textViewEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginRight="15dp"
+                            android:drawablePadding="16dp"
+                            android:hint="@string/dateBuyGame" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/button_details_games_save"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/defaultButton"
+                        android:text="@string/saveButton" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    <include layout="@layout/view_load" />
+</FrameLayout>

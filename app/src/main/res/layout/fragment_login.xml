@@ -1,0 +1,83 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app2="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:weightSum="10"
+    >
+
+    <com.github.florent37.arclayout.ArcLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:arc_cropDirection="cropInside"
+        app:arc_height="900dp"
+        app:arc_padding="300dp"
+        android:layout_weight="4"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:src="@drawable/my_logo"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            />
+
+    </com.github.florent37.arclayout.ArcLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="10dp"
+        android:layout_weight="6"
+        >
+
+        <EditText
+            android:id="@+id/etUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:hint="@string/nick"
+            android:singleLine="true" />
+        <EditText
+            android:id="@+id/etPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:layout_marginBottom="50dp"
+            />
+
+        <!--<Button-->
+            <!--android:id="@+id/btnSingIn"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--style="@style/defaultButton"-->
+            <!--android:text="@string/login"-->
+            <!--/>-->
+
+        <com.dd.CircularProgressButton
+            android:id="@+id/btnSingIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            style="@style/defaultButton"
+            app2:cpb_iconComplete="@drawable/ic_check_circle_white_24dp"
+            app2:cpb_iconError="@drawable/ic_cancel_white_24dp"
+            app2:cpb_textIdle="@string/login"
+            />
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/defaultButton"
+            android:text="@string/register"
+            />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //Theme Colors
+    <color name="colorPrimary">#E84242</color>
+    <color name="colorPrimaryDark">#DB2932</color>
+    <color name="colorAccent">#0171BD</color>
+    <color name="background">#edebee</color>
+    <color name="dark_accent_color">#013d65</color>
+
+    //BottonBarColors
+    <color name="firstItem">@color/colorPrimary</color>
+    <color name="secondItem">@color/colorAccent</color>
+    <color name="thirdItem">#ed690a</color>
+    <color name="fourtyItem">#70cf51</color>
+
+    //SwipeLayoutColors
+    <color name="deletegame">#a90f07</color>
+    <color name="editgame">#31761e</color>
+    <color name="borderCicleImage">#FF000000</color>
+    <color name="cardBackground">#f1f5f8</color>
+
+    //DetailsGames
+    <color name="backgroundDetailsGames">#59000000</color>
+
+    //Profile
+    <color name="closeSessionButton">#a90f07</color>
+
+    //Loading View
+    <color name="blur">#99000000</color>
+
+    //Basic colors
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffff</color>
+    <color name="grey_very_light">#f2f2f2</color>
+    <color name="grey_light">#cccccc</color>
+    <color name="grey_medium">#808080</color>
+    <color name="grey_medium_hover">#4d4d4d</color>
+    <color name="grey_dark">#4d4d4d</color>
+    <color name="gris_very_dark">#1a1a1a</color>
+    <color name="black">#000000</color>
+
+    <color name="border_form_gris">#dddddd</color>
+    <color name="label_form_gris">#dddddd</color>
+
+</resources>

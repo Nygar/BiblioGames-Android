@@ -1,0 +1,69 @@
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
+
+    defaultConfig {
+        applicationId "com.bibliogames.nygar.bibliogames"
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.1"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:design:24.2.1'
+    compile 'com.android.support:cardview-v7:24.2.1'
+    compile 'com.android.support:support-v4:24.2.1'
+
+    //RecycleViewLayoutContol
+    compile 'com.github.SilenceDut:ExpandableLayout:1.2.0'
+    compile 'com.github.daimajia:AndroidSwipeLayout:f66ac6942b'
+    compile 'com.github.vipulasri:timelineview:1.0.3'
+
+    //Spinner
+    compile 'com.jaredrummler:material-spinner:1.1.0'
+
+    //Bottom Navigation Bar
+    compile 'com.github.armcha:LuseenBottomNavigation:1.8.2'
+
+    //ImageLoader
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
+    //AutoInject
+    compile 'com.jakewharton:butterknife:8.4.0'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+
+    //ApiRest
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    apt 'com.bluelinelabs:logansquare-compiler:1.3.7'
+    compile "com.bluelinelabs:logansquare:1.3.7"
+    compile "com.github.aurae.retrofit2:converter-logansquare:1.4.1"
+
+    //Graphics
+    compile 'com.github.PhilJay:MPAndroidChart:v2.2.5'
+
+    //RxJava
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'io.reactivex:rxjava:1.2.2'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+
+    //Login
+    compile 'com.github.florent37:arclayout:1.0.1'
+    compile 'com.github.dmytrodanylyk.circular-progress-button:library:1.1.3'
+
+    testCompile 'junit:junit:4.12'
+
+}

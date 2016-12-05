@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">BiblioGames</string>
+
+    //SharesPreferences
+    <string name="file">sharesPreferencesFile</string>
+    <string name="current_user">current_user</string>
+    //Base URL
+    <string name="base_url_images">http://nygar.esy.es/biblioGames/uploadIMG/</string>
+    //GenericString
+    <string name="ok">Continuar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="loading">Comprobando</string>
+    <string name="no_network">Se ha producido un error de conexion</string>
+    <string name="all">Todos</string>
+
+    //DetailsGames
+    <string name="current_update_game">current_update_game</string>
+    <string name="tittleGame">Nombre del juego</string>
+    <string name="buyPriceGame">Precio de compra</string>
+    <string name="dateBuyGame">DD/MM/YY</string>
+    <string name="saveButton">Guardar</string>
+    <string name="noTittle">Titulo No Seleccionado</string>
+
+    //AddFriend
+    <string name="searchfriend">Buscar Usuario</string>
+    //Dialog addFriends
+    <string name="add_friends_dialog_message">¿Desea agregar a este usuario a su lista de amigos?</string>
+    <string name="add_friends_dialog_title">Confirmar</string>
+
+    //Profile/Login
+    <string name="noText">Vacio</string>
+    <string name="user_save">Usuario Guardado</string>
+    <string name="nick">Nick</string>
+    <string name="password">Password</string>
+    <string name="name">Nombre</string>
+    <string name="save">Guardar</string>
+    <string name="close_session">Cerrar session</string>
+    <string name="corfim_password">Confirmar password</string>
+    <string name="register">Registrarse</string>
+    <string name="login">Entrar</string>
+    <string name="badLogin">Usuario o contraseña incorrectos</string>
+    <string name="noSamePass">Las contraseñas no coinciden</string>
+
+    //Gallery
+    <string name="no_image_picked">No has seleccionado ninguna imagen</string>
+    <string name="gallery_pick_error">Error desconocido</string>
+
+    //Console
+    <string name="no_console">Consola No Disponible</string>
+</resources>

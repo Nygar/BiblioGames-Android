@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipe_layout_library"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!--Right drag-->
+    <FrameLayout
+        android:id="@+id/bottom_wrapper_left"
+        android:layout_width="90dp"
+        android:layout_height="match_parent"
+        android:background="@color/deletegame">
+
+        <ImageButton
+            android:id="@+id/iv_library_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_delete_forever_white_24dp" />
+
+    </FrameLayout>
+
+    <!--Left drag-->
+    <FrameLayout
+        android:id="@+id/bottom_wrapper_right"
+        android:layout_width="90dp"
+        android:layout_height="match_parent"
+        android:background="@color/editgame">
+
+        <ImageButton
+            android:id="@+id/iv_library_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_edit_white_24dp"
+            android:visibility="visible" />
+
+    </FrameLayout>
+
+    <!--Card-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingStart="10dp"
+        android:paddingRight="5dp"
+        android:paddingEnd="5dp"
+        >
+
+        <!--TimeLine-->
+        <com.vipul.hp_hp.timelineview.TimelineView
+            android:id="@+id/time_marker"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:line="@color/colorPrimary"
+            app:line_size="2dp"
+            app:marker_size="25dp" />
+
+        <!--CardView-->
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="@color/cardBackground"
+            android:elevation="3dp"
+            android:layout_margin="5dp"
+            >
+
+            <!--ItemContent-->
+            <LinearLayout
+                android:id="@+id/item_library_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="10"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_library_avatar"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_gravity="center_vertical"
+                    />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="7"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView_library_gameTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:minLines="2"
+                        />
+
+                    <TextView
+                        android:id="@+id/textView_library_gameConsole"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/textView_library_gameDateBuy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center" />
+                </LinearLayout>
+
+                <!--Price-->
+                <FrameLayout
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView_library_gamePrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|center_horizontal" />
+                </FrameLayout>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+
+</com.daimajia.swipe.SwipeLayout>

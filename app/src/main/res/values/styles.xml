@@ -1,0 +1,62 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/background</item>
+    </style>
+
+    //Toolbar
+    <style name="ToolbarColoredBackArrowWhite" parent="AppTheme">
+        <item name="android:textColorSecondary">@color/white</item>
+    </style>
+
+    //EditText
+    <style name="customEditText">
+        <item name="android:singleLine">true</item>
+    </style>
+
+    //TextView=Edittext
+    <style name="textViewEditText">
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textColor">?attr/editTextColor</item>
+        <item name="android:background">?attr/editTextBackground</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMediumInverse</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    //SearchEditText
+    <style name="searchEditText" parent="customEditText">
+        <item name="android:background">@drawable/edit_selector</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textCursorDrawable">@drawable/cursor</item>
+        <item name="android:imeOptions">actionDone</item>
+    </style>
+
+    //CloseSessionButton
+    <style name="closeSessionButton" parent="Base.Widget.AppCompat.Button">
+        <item name="android:background">@drawable/round_button_red</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    //DefaultButton
+    <style name="defaultButton" parent="Widget.AppCompat.Button">
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:background">@drawable/round_button</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+</resources>
