@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="com.bibliogames.nygar.bibliogames.view.fragment.DetailsGamesFragment">
+        tools:context="com.bibliogames.nygar.bibliogames.presenter.fragment.DetailsGamesFragment">
 
         <include layout="@layout/view_toolbar_back" />
 

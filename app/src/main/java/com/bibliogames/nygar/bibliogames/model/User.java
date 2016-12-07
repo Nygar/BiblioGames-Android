@@ -3,6 +3,16 @@ package com.bibliogames.nygar.bibliogames.model;
 import com.bluelinelabs.logansquare.annotation.JsonField;
 import com.bluelinelabs.logansquare.annotation.JsonObject;
 
+/**
+ * Clase para el objeto usuario
+ * ********************************
+ * id: tipo int, guarda el id del usuario
+ * nick: tipo string guarda el nombre del login del usuario
+ * pass: tipo string, guarda la contraseña del usuario
+ * name: tipo string, guarda el nombre del usuario
+ * avatar: tipo string, guarda la ruta del usuario
+ */
+
 @JsonObject(serializeNullObjects=true, serializeNullCollectionElements =true )
 public class User {
     @JsonField(name = "id")

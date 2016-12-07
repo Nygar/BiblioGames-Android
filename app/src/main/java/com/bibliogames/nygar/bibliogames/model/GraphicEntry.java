@@ -3,6 +3,15 @@ package com.bibliogames.nygar.bibliogames.model;
 import com.bluelinelabs.logansquare.annotation.JsonField;
 import com.bluelinelabs.logansquare.annotation.JsonObject;
 
+/**
+ * Clase para los objetos de la grafica
+ *
+ * Propiedades:
+ * *********************
+ * title: guarda el nombre de la consola
+ * entryData: guarda lo que se ha gastado en esa consola
+ */
+
 @JsonObject(serializeNullObjects=true, serializeNullCollectionElements =true )
 public class GraphicEntry {
     @JsonField(name = "name_console")

@@ -8,6 +8,18 @@ import android.os.Parcelable;
 import com.bluelinelabs.logansquare.annotation.JsonField;
 import com.bluelinelabs.logansquare.annotation.JsonObject;
 
+/**
+ * Clase de los objetos juegos
+ *
+ * Propiedades:
+ * id: tipo entero, contiene el identificador del juego
+ * title: tipo string, contiene el titulo del juego
+ * price: tipo decimal, es el precio que costo el juego
+ * dateBuy: tipo fecha, dia de cuando se compro el juego
+ * console: tipo consola, es la consola en la que se compro el juego
+ * cover: tipo string, guarda la imagen del juego
+ */
+
 @JsonObject(serializeNullObjects=true, serializeNullCollectionElements =true )
 public class Games implements Parcelable {
     @JsonField(name = "id")

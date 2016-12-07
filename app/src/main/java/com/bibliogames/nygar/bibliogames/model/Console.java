@@ -9,6 +9,17 @@ import com.bluelinelabs.logansquare.annotation.JsonObject;
 
 import java.util.Date;
 
+/**
+ * Clase del objeto consola
+ *
+ * Propiedades
+ * ******************
+ * id: tipo entero, recoge el identificador de la consola
+ * name: tipo string, contiene el nombre de la consola
+ * dateFabrication: tipo fecha, contiene la fecha de fabricacion de la consola
+ * logo: tipo string, se usa para guardar la ruta de la imagen de la consola
+ */
+
 @JsonObject(serializeNullObjects=true, serializeNullCollectionElements =true )
 public class Console implements Parcelable {
 

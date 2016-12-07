@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="com.bibliogames.nygar.bibliogames.view.fragment.FriendFragment">
+        tools:context="com.bibliogames.nygar.bibliogames.presenter.fragment.FriendFragment">
 
         <include layout="@layout/view_toolbar_friends" />
 
