@@ -67,7 +67,9 @@ public class LoginFragment extends Fragment implements LoginServiceInterface{
         return view;
     }//Fin on create view
 
-    //Este es para el boton Login
+    /**
+     * onClickListeners
+     */
     @OnClick(R.id.btnSingIn)
     public void loginOnClickListener(){
         //Lamamos a el AsyncLogin
@@ -84,7 +86,10 @@ public class LoginFragment extends Fragment implements LoginServiceInterface{
         loginInterface.goToRegisterUser();
     }
 
-    //Metodos de la apiRest
+    /**
+     * Respuestas de la api
+     * {@link LoginServiceInterface}
+     */
     @Override
     public void loginOk(User userLogged) {
         if(userLogged!=null) {

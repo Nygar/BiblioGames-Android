@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.bibliogames.nygar.bibliogames.R;
 import com.bibliogames.nygar.bibliogames.model.Games;
@@ -31,6 +32,7 @@ import com.luseen.luseenbottomnavigation.BottomNavigation.BottomNavigationView;
 import java.util.List;
 
 import butterknife.BindColor;
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -52,6 +54,8 @@ public class MainActivity extends BaseActivity implements MainActivityInterface,
     int thirdColor;
     @BindColor(R.color.fourtyItem)
     int fourtyColor;
+    @BindString(R.string.no_network)
+    String noNetString;
 
     private CustomSharedPreferences preferences;
     private User user;
@@ -149,6 +153,12 @@ public class MainActivity extends BaseActivity implements MainActivityInterface,
         });
     }
 
+    private void endGetApiData(){
+        if(getFriendsStatus&&getGamesStatus){
+            loadingview.setVisibility(View.GONE);
+        }
+    }
+
     @Override
     public void onBackPressed() {
         Fragment backEntry=null;
@@ -165,6 +175,10 @@ public class MainActivity extends BaseActivity implements MainActivityInterface,
         }
     }
 
+    /**
+     * Metodos de la interfaz
+     * {@link MainActivityInterface}
+     */
     @Override
     public void addNewGame() {
         replaceFragmentBackStack(R.id.mainFragmentContainer, DetailsGamesFragment.newInstance(null));
@@ -210,6 +224,10 @@ public class MainActivity extends BaseActivity implements MainActivityInterface,
         new ApiRestImpl(this,this).getUserFriends(user.getId());
     }
 
+    /**
+     * Respuestas de la api
+     * {@link GetFriendsServiceInterface}
+     */
     @Override
     public void getFriendsOk(List<User> frieUserList) {
         getFriendsStatus=true;
@@ -219,9 +237,14 @@ public class MainActivity extends BaseActivity implements MainActivityInterface,
 
     @Override
     public void getFriendsFail() {
+        Toast.makeText(this, noNetString, Toast.LENGTH_SHORT).show();
         loadingview.setVisibility(View.GONE);
     }
 
+    /**
+     * Respuestas de la api
+     * {@link UserGamesServiceInterface}
+     */
     @Override
     public void userGamesOk(List<Games> userListGames) {
         getGamesStatus=true;
@@ -232,16 +255,14 @@ public class MainActivity extends BaseActivity implements MainActivityInterface,
 
     @Override
     public void userGamesFail() {
+        Toast.makeText(this, noNetString, Toast.LENGTH_SHORT).show();
         loadingview.setVisibility(View.GONE);
-
     }
 
-    private void endGetApiData(){
-        if(getFriendsStatus&&getGamesStatus){
-            loadingview.setVisibility(View.GONE);
-        }
-    }
-
+    /**
+     * Respuestas de la api
+     * {@link GraphicServiceInterface}
+     */
     @Override
     public void graphicOk(List<GraphicEntry> graphicEntries) {
         currentGraphic.updateGraphic(graphicEntries);
@@ -249,6 +270,6 @@ public class MainActivity extends BaseActivity implements MainActivityInterface,
 
     @Override
     public void graphicFail() {
-
+        Toast.makeText(this, noNetString, Toast.LENGTH_SHORT).show();
     }
 }

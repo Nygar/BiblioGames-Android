@@ -77,7 +77,9 @@ public class RegistrationFragment extends Fragment implements RegisterServiceInt
         return view;
     }//Fin oncreate
 
-    //Click del btnregistrar
+    /**
+     * onClickListener
+     */
     @OnClick(R.id.btnRegistro)
     public void registerButtonOnClickListener(){
         //Creamos el usuario
@@ -96,7 +98,10 @@ public class RegistrationFragment extends Fragment implements RegisterServiceInt
         }
     }
 
-    //ApiRestInterface Methods
+    /**
+     * Respuestas de la api
+     * {@link RegisterServiceInterface}
+     */
     @Override
     public void registerOk(ApiResponse response) {
         loginActivityInterface.loadOff();

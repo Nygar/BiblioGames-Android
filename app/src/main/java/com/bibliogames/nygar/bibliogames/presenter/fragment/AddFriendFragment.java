@@ -32,7 +32,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Clase {@link Fragment} fragment usado para la pantalla de add Friend
+ * Esta clase se usa en {@link com.bibliogames.nygar.bibliogames.presenter.activity.MainActivity}
  */
 public class AddFriendFragment extends Fragment implements GetNoFriendsServiceInterface, AddFriendServiceInterface {
 
@@ -56,7 +57,6 @@ public class AddFriendFragment extends Fragment implements GetNoFriendsServiceIn
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_add_friend, container, false);
         ButterKnife.bind(this,view);
         inicializeFragment();
@@ -76,7 +76,6 @@ public class AddFriendFragment extends Fragment implements GetNoFriendsServiceIn
     }
 
     private void inicializeFragment(){
-        //users = datatestList();
         users= new ArrayList<>();
         searchFriend.addTextChangedListener(textListener);
 
@@ -92,7 +91,6 @@ public class AddFriendFragment extends Fragment implements GetNoFriendsServiceIn
 
     AddFriendsAdapter.OnItemClickListener  onItemClickListener= sUser -> {
         final User sUseraux=sUser;
-        //Instantiate an AlertDialog.Builder
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         builder.setMessage(R.string.add_friends_dialog_message)
@@ -150,11 +148,6 @@ public class AddFriendFragment extends Fragment implements GetNoFriendsServiceIn
         }
     };
 
-    @OnClick(R.id.button_toolbar_back)
-    public void backOnClickListener(){
-        mainActivityInterface.onBack();
-    }
-
     private void loadnoFriends(){
         mainActivityInterface.loadOn();
         new ApiRestImpl(this,getContext()).getUserNoFriends(currentUser.getId());
@@ -164,6 +157,46 @@ public class AddFriendFragment extends Fragment implements GetNoFriendsServiceIn
         mainActivityInterface.loadOn();
         new ApiRestImpl(this,getContext()).postAddFriend(currentUser.getId(),idFriend);
     }
+
+    /**
+     * onClickListener
+     */
+    @OnClick(R.id.button_toolbar_back)
+    public void backOnClickListener(){
+        mainActivityInterface.onBack();
+    }
+
+    /**
+     * Respuestas de la api
+     * {@link GetNoFriendsServiceInterface}
+     */
+    @Override
+    public void getNoFriendsOk(List<User> frieUserList) {
+        mainActivityInterface.loadOff();
+        users=frieUserList;
+        adapter.updateAdapter(users);
+    }
+
+    @Override
+    public void getNoFriendsFail() {
+        mainActivityInterface.loadOff();
+    }
+
+    /**
+     * Respuestas de la api
+     * {@link AddFriendServiceInterface}
+     */
+    @Override
+    public void addFriendOk(ApiResponse response) {
+        mainActivityInterface.reloadFriends();
+        mainActivityInterface.onBack();
+    }
+
+    @Override
+    public void addFriendFail() {
+        mainActivityInterface.loadOff();
+    }
+
 
     /*private List<User> datatestList(){
         List<User> testFriends = new ArrayList<>();
@@ -183,27 +216,4 @@ public class AddFriendFragment extends Fragment implements GetNoFriendsServiceIn
 
         return testFriends;
     }*/
-
-    @Override
-    public void getNoFriendsOk(List<User> frieUserList) {
-        mainActivityInterface.loadOff();
-        users=frieUserList;
-        adapter.updateAdapter(users);
-    }
-
-    @Override
-    public void getNoFriendsFail() {
-        mainActivityInterface.loadOff();
-    }
-
-    @Override
-    public void addFriendOk(ApiResponse response) {
-        mainActivityInterface.reloadFriends();
-        mainActivityInterface.onBack();
-    }
-
-    @Override
-    public void addFriendFail() {
-        mainActivityInterface.loadOff();
-    }
 }

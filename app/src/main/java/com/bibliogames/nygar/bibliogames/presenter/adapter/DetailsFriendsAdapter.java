@@ -19,7 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Adapter for class {@link com.bibliogames.nygar.bibliogames.presenter.fragment.LibraryFragment}
+ * Adapter for class {@link com.bibliogames.nygar.bibliogames.presenter.fragment.DetailsFriendFragment}
  */
 
 public class DetailsFriendsAdapter extends RecyclerView.Adapter<DetailsFriendsAdapter.ViewHolder>{
@@ -64,7 +64,7 @@ public class DetailsFriendsAdapter extends RecyclerView.Adapter<DetailsFriendsAd
         return TimelineView.getTimeLineViewType(position,getItemCount());
     }
 
-    //VIEWHOLDER
+    /**VIEWHOLDER**/
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.iv_library_avatar)

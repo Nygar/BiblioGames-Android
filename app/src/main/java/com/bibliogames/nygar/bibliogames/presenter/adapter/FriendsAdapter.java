@@ -22,7 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Adapter for class {@link com.bibliogames.nygar.bibliogames.presenter.fragment.LibraryFragment}
+ * Adapter for class {@link com.bibliogames.nygar.bibliogames.presenter.fragment.FriendFragment}
  */
 
 public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHolder>{
@@ -86,7 +86,7 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
         this.onItemClickListener = onItemClickListener;
     }
 
-    //VIEWHOLDER
+    /**VIEWHOLDER**/
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.swipe_layout_friends)

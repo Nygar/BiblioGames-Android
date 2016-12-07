@@ -27,7 +27,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Clase {@link Fragment} fragment usado para la pantalla de mostrar los amigos
+ * Esta clase se usa en {@link com.bibliogames.nygar.bibliogames.presenter.activity.MainActivity}
  */
 public class FriendFragment extends Fragment implements DeleteFriendServiceInterface{
 
@@ -35,9 +36,7 @@ public class FriendFragment extends Fragment implements DeleteFriendServiceInter
     RecyclerView recyclerView;
 
     private List<User> users;
-
     private FriendsAdapter adapter;
-
     private MainActivityInterface mainActivityInterface;
 
     public FriendFragment() {
@@ -55,7 +54,6 @@ public class FriendFragment extends Fragment implements DeleteFriendServiceInter
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_friend, container, false);
         ButterKnife.bind(this,view);
 
@@ -95,11 +93,6 @@ public class FriendFragment extends Fragment implements DeleteFriendServiceInter
         }
     };
 
-    @OnClick(R.id.button_friends_add)
-    public void addOnClickListener(){
-        mainActivityInterface.addNewFriend();
-    }
-
     public void updateFragment(List<User> nListFriends){
         users=nListFriends;
         adapter.updateAdapter(users);
@@ -112,15 +105,24 @@ public class FriendFragment extends Fragment implements DeleteFriendServiceInter
         new ApiRestImpl(this, getContext()).postDeleteFriend(user.getId(),friend.getId());
     }
 
+    /**
+     * onClickListener
+     */
+    @OnClick(R.id.button_friends_add)
+    public void addOnClickListener(){
+        mainActivityInterface.addNewFriend();
+    }
+
+    /**
+     * Respuestas de la api
+     * {@link DeleteFriendServiceInterface}
+     */
     @Override
     public void deleteFriendOk(ApiResponse response) {
         if (response.getStatus() == 200) {
             mainActivityInterface.reloadFriends();
-
         }
     }
-
-
     @Override
     public void deleteFriendFail() {
         mainActivityInterface.loadOff();

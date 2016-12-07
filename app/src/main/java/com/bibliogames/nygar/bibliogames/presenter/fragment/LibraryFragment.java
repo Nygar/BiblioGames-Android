@@ -140,6 +140,10 @@ public class LibraryFragment extends Fragment implements DeleteGameServiceInterf
         }
     };
 
+    /**
+     * onClickListener
+     */
+
     @OnClick(R.id.button_library_add)
     public void addOnClickListener(){
         mainActivityInterface.addNewGame();
@@ -150,6 +154,10 @@ public class LibraryFragment extends Fragment implements DeleteGameServiceInterf
         adapter.updateAdapter(nListGames);
     }
 
+    /**
+     * Respuestas de la api
+     * {@link DeleteGameServiceInterface}
+     */
     @Override
     public void deleteGameOk() {
         mainActivityInterface.reloadGames();

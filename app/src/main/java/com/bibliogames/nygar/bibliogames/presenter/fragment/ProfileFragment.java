@@ -102,6 +102,9 @@ public class ProfileFragment extends Fragment implements UpdateUserServiceInterf
         }
     }
 
+    /**
+     * onCLickListeners
+     */
     @OnClick(R.id.btnSave)
     public void saveButtonOnClickListener(){
         String nick=etNick.getText().toString();
@@ -179,6 +182,10 @@ public class ProfileFragment extends Fragment implements UpdateUserServiceInterf
 
     }//Fin on activity result
 
+    /**
+     * Respuestas de la api
+     * {@link UpdateUserServiceInterface}
+     */
     @Override
     public void updateUserOk(ApiResponse response) {
         mainActivityInterface.loadOff();

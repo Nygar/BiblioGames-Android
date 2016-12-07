@@ -81,22 +81,7 @@ public class LoginActivity extends BaseActivity implements LoginActivityInterfac
      * Estos son los metodos de la interface {@link LoginActivityInterface}
      * Con estos metodos podemos comunicar los {@link android.support.v4.app.Fragment} con {@link LoginActivity}
      */
-
-    //Este es cuando la comprobacion inicial que hacemos al principio de esta actividad ha tenido exito
-    @Override
-    public void loginOk(User userLogin) {
-        if(userLogin!=null) {
-            //Guardamos al usuario in shared preferences
-            preferences.setCurrentUser(userLogin);
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        }else{
-            loginBad();
-        }
-    }
-
-    //Este es para cuando se comprueba el login cuando el usuario pulse el boton en el fragment
+//Este es para cuando se comprueba el login cuando el usuario pulse el boton en el fragment
     @Override
     public void loginFragmentOk(User userLogged) {
         if(userLogged!=null) {
@@ -111,25 +96,6 @@ public class LoginActivity extends BaseActivity implements LoginActivityInterfac
         }
     }
 
-    //Para cuando se produce un error de conexion
-    @Override
-    public void loginFail() {
-        loadOff();
-        Toast.makeText(this,noNet,Toast.LENGTH_SHORT).show();
-    }
-
-
-    //Con este metodo mostraremos un mensaje de login no valido
-    @Override
-    public void loginBad() {
-        loadOff();
-        Toast.makeText(this,badLogin,Toast.LENGTH_SHORT).show();
-
-        preferences.clearUser();
-        addFragment(R.id.loginFragmentContainer,new LoginFragment());
-    }
-
-
     //Con este metodo iremos al Registro
     @Override
     public void goToRegisterUser() {
@@ -140,6 +106,38 @@ public class LoginActivity extends BaseActivity implements LoginActivityInterfac
     @Override
     public void backToLogin() {
         super.onBackPressed();
+    }
+
+    /**
+     * Respuestas de la api
+     * {@link LoginServiceInterface}
+     */
+    @Override
+    public void loginOk(User userLogin) {
+        if(userLogin!=null) {
+            //Guardamos al usuario in shared preferences
+            preferences.setCurrentUser(userLogin);
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }else{
+            loginBad();
+        }
+    }
+
+    @Override
+    public void loginFail() {
+        loadOff();
+        Toast.makeText(this,noNet,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void loginBad() {
+        loadOff();
+        Toast.makeText(this,badLogin,Toast.LENGTH_SHORT).show();
+
+        preferences.clearUser();
+        addFragment(R.id.loginFragmentContainer,new LoginFragment());
     }
 
 }//Finclase

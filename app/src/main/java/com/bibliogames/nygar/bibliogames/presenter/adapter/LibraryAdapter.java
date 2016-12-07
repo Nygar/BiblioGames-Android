@@ -98,7 +98,7 @@ public class LibraryAdapter extends RecyclerView.Adapter<LibraryAdapter.ViewHold
         return TimelineView.getTimeLineViewType(position,getItemCount());
     }
 
-    //VIEWHOLDER
+    /**VIEWHOLDER**/
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.swipe_layout_library)

@@ -51,7 +51,7 @@ import static android.app.Activity.RESULT_OK;
 
 /**
  * Clase {@link Fragment} fragment usado para la pantalla de add/update games
- * Esta clase de usa en {@link com.bibliogames.nygar.bibliogames.presenter.activity.MainActivity}
+ * Esta clase se usa en {@link com.bibliogames.nygar.bibliogames.presenter.activity.MainActivity}
  */
 public class DetailsGamesFragment extends Fragment implements UpdateGameServiceInterface,AddGameServiceInterface {
 
@@ -179,6 +179,9 @@ public class DetailsGamesFragment extends Fragment implements UpdateGameServiceI
 
     }
 
+    /**
+     * onClickListeners
+     */
     @OnClick(R.id.button_toolbar_back)
     public void backOnClickListener(){
         mainActivityInterface.onBack();
@@ -272,7 +275,9 @@ public class DetailsGamesFragment extends Fragment implements UpdateGameServiceI
 
                 // Get the Image from data
                 Uri selectedImage = data.getData();
-                Picasso.with(getContext()).load(selectedImage).fit().centerCrop().into(ivCover);
+                Picasso.with(getContext()).load(selectedImage)
+                        .memoryPolicy(MemoryPolicy.NO_CACHE).networkPolicy(NetworkPolicy.NO_CACHE)
+                        .fit().centerCrop().into(ivCover);
 
             } else {
                 Toast.makeText(getActivity(), noImagePicked,
@@ -285,6 +290,10 @@ public class DetailsGamesFragment extends Fragment implements UpdateGameServiceI
 
     }//Fin on activity result
 
+    /**
+     * Respuestas de la api
+     * {@link UpdateGameServiceInterface}
+     */
     @Override
     public void updateGameOk(ApiResponse response) {
         if(response.getStatus()==200){
@@ -300,6 +309,10 @@ public class DetailsGamesFragment extends Fragment implements UpdateGameServiceI
         Toast.makeText(getContext(), noNetString, Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Respuestas de la api
+     * {@link AddGameServiceInterface}
+     */
     @Override
     public void addGameOk(ApiResponse response) {
         if(response.getStatus()==200){

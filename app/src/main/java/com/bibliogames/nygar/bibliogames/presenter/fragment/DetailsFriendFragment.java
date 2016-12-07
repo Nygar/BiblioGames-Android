@@ -25,9 +25,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link DetailsFriendFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Clase {@link Fragment} fragment usado para la pantalla de ver los juegos de los amigos
+ * Esta clase se usa en {@link com.bibliogames.nygar.bibliogames.presenter.activity.MainActivity}
  */
 public class DetailsFriendFragment extends Fragment implements UserGamesServiceInterface{
 
@@ -37,9 +36,7 @@ public class DetailsFriendFragment extends Fragment implements UserGamesServiceI
     private static final String ID_FRIEND = "IDFRIEND";
 
     private int backupIdFriend;
-
     private DetailsFriendsAdapter adapter;
-
     private MainActivityInterface mainActivityInterface;
 
     public DetailsFriendFragment() {
@@ -93,7 +90,6 @@ public class DetailsFriendFragment extends Fragment implements UserGamesServiceI
     }
 
     private void inicializeRecycle(){
-        //games = datatestList();
         List<Games> games=new ArrayList<>();
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
@@ -102,11 +98,18 @@ public class DetailsFriendFragment extends Fragment implements UserGamesServiceI
         recyclerView.setAdapter(adapter);
     }
 
+    /**
+     * onCLickListener
+     */
     @OnClick(R.id.button_toolbar_back)
     public void onBack(){
         mainActivityInterface.onBack();
     }
 
+    /**
+     * Respuestas de la api
+     * {@link UserGamesServiceInterface}
+     */
     @Override
     public void userGamesOk(List<Games> userListGames) {
         mainActivityInterface.loadOff();
