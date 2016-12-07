@@ -1,4 +1,4 @@
-package com.bibliogames.nygar.bibliogames.presenter.fragment;
+package com.bibliogames.nygar.bibliogames.view.fragment;
 
 
 import android.app.DatePickerDialog;
@@ -26,10 +26,10 @@ import com.bibliogames.nygar.bibliogames.model.User;
 import com.bibliogames.nygar.bibliogames.services.ApiRestImpl;
 import com.bibliogames.nygar.bibliogames.services.serviceinterface.AddGameServiceInterface;
 import com.bibliogames.nygar.bibliogames.services.serviceinterface.UpdateGameServiceInterface;
-import com.bibliogames.nygar.bibliogames.presenter.interfaces.MainActivityInterface;
-import com.bibliogames.nygar.bibliogames.presenter.utils.BitmapEncode;
-import com.bibliogames.nygar.bibliogames.presenter.utils.CustomSharedPreferences;
-import com.bibliogames.nygar.bibliogames.presenter.utils.ParseXML;
+import com.bibliogames.nygar.bibliogames.view.interfaces.MainActivityInterface;
+import com.bibliogames.nygar.bibliogames.view.utils.BitmapEncode;
+import com.bibliogames.nygar.bibliogames.view.utils.CustomSharedPreferences;
+import com.bibliogames.nygar.bibliogames.view.utils.ParseXML;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
@@ -51,7 +51,7 @@ import static android.app.Activity.RESULT_OK;
 
 /**
  * Clase {@link Fragment} fragment usado para la pantalla de add/update games
- * Esta clase se usa en {@link com.bibliogames.nygar.bibliogames.presenter.activity.MainActivity}
+ * Esta clase se usa en {@link com.bibliogames.nygar.bibliogames.view.activity.MainActivity}
  */
 public class DetailsGamesFragment extends Fragment implements UpdateGameServiceInterface,AddGameServiceInterface {
 

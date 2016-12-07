@@ -1,4 +1,4 @@
-package com.bibliogames.nygar.bibliogames.presenter.adapter;
+package com.bibliogames.nygar.bibliogames.view.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,7 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Adapter for class {@link com.bibliogames.nygar.bibliogames.presenter.fragment.FriendFragment}
+ * Adapter for class {@link com.bibliogames.nygar.bibliogames.view.fragment.FriendFragment}
  */
 
 public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHolder>{

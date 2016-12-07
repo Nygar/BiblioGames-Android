@@ -1,4 +1,4 @@
-package com.bibliogames.nygar.bibliogames.presenter.utils;
+package com.bibliogames.nygar.bibliogames.view.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

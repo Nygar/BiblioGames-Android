@@ -1,4 +1,4 @@
-package com.bibliogames.nygar.bibliogames.presenter.fragment;
+package com.bibliogames.nygar.bibliogames.view.fragment;
 
 
 import android.os.Bundle;
@@ -26,7 +26,7 @@ import butterknife.ButterKnife;
 
 /**
  * Clase {@link Fragment} usada para mostrar los graficos de gastos
- * Esta clase de usa en {@link com.bibliogames.nygar.bibliogames.presenter.activity.MainActivity}
+ * Esta clase de usa en {@link com.bibliogames.nygar.bibliogames.view.activity.MainActivity}
  */
 public class GraphicFragment extends Fragment {
 

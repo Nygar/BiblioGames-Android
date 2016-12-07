@@ -1,9 +1,10 @@
-package com.bibliogames.nygar.bibliogames.presenter.fragment;
+package com.bibliogames.nygar.bibliogames.view.fragment;
 
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,9 +17,9 @@ import com.bibliogames.nygar.bibliogames.model.Console;
 import com.bibliogames.nygar.bibliogames.model.Games;
 import com.bibliogames.nygar.bibliogames.services.ApiRestImpl;
 import com.bibliogames.nygar.bibliogames.services.serviceinterface.DeleteGameServiceInterface;
-import com.bibliogames.nygar.bibliogames.presenter.adapter.LibraryAdapter;
-import com.bibliogames.nygar.bibliogames.presenter.interfaces.MainActivityInterface;
-import com.bibliogames.nygar.bibliogames.presenter.utils.ParseXML;
+import com.bibliogames.nygar.bibliogames.view.adapter.LibraryAdapter;
+import com.bibliogames.nygar.bibliogames.view.interfaces.MainActivityInterface;
+import com.bibliogames.nygar.bibliogames.view.utils.ParseXML;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ import butterknife.OnClick;
 
 /**
  * Clase {@link Fragment} usada para la pantalla de mostras los videojuegos
- * Esta clase de usa en {@link com.bibliogames.nygar.bibliogames.presenter.activity.MainActivity}
+ * Esta clase de usa en {@link com.bibliogames.nygar.bibliogames.view.activity.MainActivity}
  */
 public class LibraryFragment extends Fragment implements DeleteGameServiceInterface {
 
@@ -151,7 +152,9 @@ public class LibraryFragment extends Fragment implements DeleteGameServiceInterf
 
     public void updateFragment(List<Games> nListGames){
         games=nListGames;
-        adapter.updateAdapter(nListGames);
+        if(adapter!=null) {
+            adapter.updateAdapter(nListGames);
+        }
     }
 
     /**
@@ -160,7 +163,18 @@ public class LibraryFragment extends Fragment implements DeleteGameServiceInterf
      */
     @Override
     public void deleteGameOk() {
-        mainActivityInterface.reloadGames();
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        builder.setMessage(R.string.delete_game_dialog_message)
+                .setTitle(R.string.confirm);
+
+        builder.setPositiveButton(R.string.ok, (dialog, id) -> {
+            mainActivityInterface.reloadGames();
+            dialog.dismiss();
+        });
+        builder.setNegativeButton(R.string.cancel, (dialog, id) -> dialog.dismiss());
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     @Override

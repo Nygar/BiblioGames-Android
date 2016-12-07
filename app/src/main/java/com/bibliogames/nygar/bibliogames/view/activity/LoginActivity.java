@@ -1,4 +1,4 @@
-package com.bibliogames.nygar.bibliogames.presenter.activity;
+package com.bibliogames.nygar.bibliogames.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,10 +10,10 @@ import com.bibliogames.nygar.bibliogames.R;
 import com.bibliogames.nygar.bibliogames.model.User;
 import com.bibliogames.nygar.bibliogames.services.ApiRestImpl;
 import com.bibliogames.nygar.bibliogames.services.serviceinterface.LoginServiceInterface;
-import com.bibliogames.nygar.bibliogames.presenter.fragment.LoginFragment;
-import com.bibliogames.nygar.bibliogames.presenter.fragment.RegistrationFragment;
-import com.bibliogames.nygar.bibliogames.presenter.interfaces.LoginActivityInterface;
-import com.bibliogames.nygar.bibliogames.presenter.utils.CustomSharedPreferences;
+import com.bibliogames.nygar.bibliogames.view.fragment.LoginFragment;
+import com.bibliogames.nygar.bibliogames.view.fragment.RegistrationFragment;
+import com.bibliogames.nygar.bibliogames.view.interfaces.LoginActivityInterface;
+import com.bibliogames.nygar.bibliogames.view.utils.CustomSharedPreferences;
 
 import butterknife.BindString;
 import butterknife.BindView;

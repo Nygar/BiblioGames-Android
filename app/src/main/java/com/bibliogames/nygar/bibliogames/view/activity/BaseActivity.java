@@ -1,4 +1,4 @@
-package com.bibliogames.nygar.bibliogames.presenter.activity;
+package com.bibliogames.nygar.bibliogames.view.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

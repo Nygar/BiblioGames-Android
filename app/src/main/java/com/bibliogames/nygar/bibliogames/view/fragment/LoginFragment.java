@@ -1,4 +1,4 @@
-package com.bibliogames.nygar.bibliogames.presenter.fragment;
+package com.bibliogames.nygar.bibliogames.view.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import com.bibliogames.nygar.bibliogames.R;
 import com.bibliogames.nygar.bibliogames.model.User;
 import com.bibliogames.nygar.bibliogames.services.ApiRestImpl;
 import com.bibliogames.nygar.bibliogames.services.serviceinterface.LoginServiceInterface;
-import com.bibliogames.nygar.bibliogames.presenter.interfaces.LoginActivityInterface;
+import com.bibliogames.nygar.bibliogames.view.interfaces.LoginActivityInterface;
 import com.dd.CircularProgressButton;
 
 import butterknife.BindString;
@@ -24,7 +24,7 @@ import butterknife.OnClick;
 
 /**
  * Esta es la clase del Fragment que tendra el login
- * localizada en {@link com.bibliogames.nygar.bibliogames.presenter.activity.LoginActivity}
+ * localizada en {@link com.bibliogames.nygar.bibliogames.view.activity.LoginActivity}
  */
 
 public class LoginFragment extends Fragment implements LoginServiceInterface{

@@ -1,4 +1,4 @@
-package com.bibliogames.nygar.bibliogames.presenter.interfaces;
+package com.bibliogames.nygar.bibliogames.view.interfaces;
 
 
 import com.bibliogames.nygar.bibliogames.model.Games;
@@ -6,7 +6,7 @@ import com.bibliogames.nygar.bibliogames.model.User;
 
 /**
  * Interfaz para comunicar los {@link android.support.v4.app.Fragment}
- * con {@link com.bibliogames.nygar.bibliogames.presenter.activity.MainActivity}
+ * con {@link com.bibliogames.nygar.bibliogames.view.activity.MainActivity}
  */
 
 public interface MainActivityInterface {

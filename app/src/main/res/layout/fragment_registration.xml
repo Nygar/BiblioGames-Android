@@ -1,58 +1,82 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingTop="10dp">
 
-    <EditText
-        android:id="@+id/etUserNick"
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:hint="@string/nick"
-        android:layout_margin="20dp"
-        android:singleLine="true" />
-    <EditText
-        android:id="@+id/etPass"
+        app:errorEnabled="true"
+        >
+        <EditText
+            android:id="@+id/etUserNick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:hint="@string/nick"
+            android:layout_margin="20dp"
+            android:singleLine="true" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-2dp"
-        android:padding="10dp"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        android:layout_margin="20dp"
-        android:singleLine="true" />
-    <EditText
-        android:id="@+id/etCorfim"
+        app:errorEnabled="true"
+        >
+        <EditText
+            android:id="@+id/etPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-2dp"
+            android:padding="10dp"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:layout_margin="20dp"
+            android:singleLine="true" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-2dp"
-        android:padding="10dp"
-        android:hint="@string/corfim_password"
-        android:inputType="textPassword"
-        android:layout_margin="20dp"
-        android:singleLine="true" />
-
-    <EditText
-        android:id="@+id/etName"
+        app:errorEnabled="true"
+        >
+        <EditText
+            android:id="@+id/etCorfim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-2dp"
+            android:padding="10dp"
+            android:hint="@string/corfim_password"
+            android:inputType="textPassword"
+            android:layout_margin="20dp"
+            android:singleLine="true" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:hint="@string/name"
-        android:layout_margin="20dp"
-        android:singleLine="true" />
-
+        app:errorEnabled="true"
+        >
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:hint="@string/name"
+            android:layout_margin="20dp"
+            android:singleLine="true" />
+    </android.support.design.widget.TextInputLayout>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-    <Button
-        android:id="@+id/btnRegistro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/defaultButton"
-        android:text="@string/register"
-        android:layout_gravity="bottom"
-        />
+        <Button
+            android:id="@+id/btnRegistro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/defaultButton"
+            android:text="@string/register"
+            android:layout_gravity="bottom"
+            />
     </FrameLayout>
 
 

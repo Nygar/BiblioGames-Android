@@ -1,4 +1,4 @@
-package com.bibliogames.nygar.bibliogames.presenter.fragment;
+package com.bibliogames.nygar.bibliogames.view.fragment;
 
 
 import android.content.Context;
@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,9 +21,9 @@ import com.bibliogames.nygar.bibliogames.model.ApiResponse;
 import com.bibliogames.nygar.bibliogames.model.User;
 import com.bibliogames.nygar.bibliogames.services.ApiRestImpl;
 import com.bibliogames.nygar.bibliogames.services.serviceinterface.UpdateUserServiceInterface;
-import com.bibliogames.nygar.bibliogames.presenter.interfaces.MainActivityInterface;
-import com.bibliogames.nygar.bibliogames.presenter.utils.BitmapEncode;
-import com.bibliogames.nygar.bibliogames.presenter.utils.CustomSharedPreferences;
+import com.bibliogames.nygar.bibliogames.view.interfaces.MainActivityInterface;
+import com.bibliogames.nygar.bibliogames.view.utils.BitmapEncode;
+import com.bibliogames.nygar.bibliogames.view.utils.CustomSharedPreferences;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
@@ -37,7 +38,7 @@ import static android.app.Activity.RESULT_OK;
 
 /**
  * Clase {@link Fragment} usada para la pantalla de perfil del usuario
- * Esta clase de usa en {@link com.bibliogames.nygar.bibliogames.presenter.activity.MainActivity}
+ * Esta clase de usa en {@link com.bibliogames.nygar.bibliogames.view.activity.MainActivity}
  */
 public class ProfileFragment extends Fragment implements UpdateUserServiceInterface {
 
@@ -102,11 +103,7 @@ public class ProfileFragment extends Fragment implements UpdateUserServiceInterf
         }
     }
 
-    /**
-     * onCLickListeners
-     */
-    @OnClick(R.id.btnSave)
-    public void saveButtonOnClickListener(){
+    private void updateUser(){
         String nick=etNick.getText().toString();
         String pass=etPass.getText().toString();
         String name=etName.getText().toString();
@@ -132,6 +129,26 @@ public class ProfileFragment extends Fragment implements UpdateUserServiceInterf
         //UpdateUserAsynctask
         mainActivityInterface.loadOn();
         new ApiRestImpl(this,getContext()).postUpdateUser(user.getId(),updateUser.getNick(),updateUser.getPass(),updateUser.getName(),updateUser.getAvatar());
+    }
+
+    /**
+     * onCLickListeners
+     */
+    @OnClick(R.id.btnSave)
+    public void saveButtonOnClickListener(){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        builder.setMessage(R.string.update_user_dialog_message)
+                .setTitle(R.string.confirm);
+
+        builder.setPositiveButton(R.string.ok, (dialog, id) -> {
+            updateUser();
+            dialog.dismiss();
+        });
+        builder.setNegativeButton(R.string.cancel, (dialog, id) -> dialog.dismiss());
+        AlertDialog dialog = builder.create();
+        dialog.show();
 
     }
 

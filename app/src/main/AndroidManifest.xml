@@ -15,10 +15,10 @@
         android:theme="@style/AppTheme">
 
         //Activity
-        <activity android:name=".presenter.activity.MainActivity"
+        <activity android:name=".view.activity.MainActivity"
             android:screenOrientation="portrait"
             />
-        <activity android:name=".presenter.activity.LoginActivity"
+        <activity android:name=".view.activity.LoginActivity"
             android:screenOrientation="portrait"
             >
             <intent-filter>

@@ -1,4 +1,4 @@
-package com.bibliogames.nygar.bibliogames.presenter.activity;
+package com.bibliogames.nygar.bibliogames.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,15 +17,15 @@ import com.bibliogames.nygar.bibliogames.services.ApiRestImpl;
 import com.bibliogames.nygar.bibliogames.services.serviceinterface.GetFriendsServiceInterface;
 import com.bibliogames.nygar.bibliogames.services.serviceinterface.GraphicServiceInterface;
 import com.bibliogames.nygar.bibliogames.services.serviceinterface.UserGamesServiceInterface;
-import com.bibliogames.nygar.bibliogames.presenter.fragment.AddFriendFragment;
-import com.bibliogames.nygar.bibliogames.presenter.fragment.DetailsFriendFragment;
-import com.bibliogames.nygar.bibliogames.presenter.fragment.DetailsGamesFragment;
-import com.bibliogames.nygar.bibliogames.presenter.fragment.FriendFragment;
-import com.bibliogames.nygar.bibliogames.presenter.fragment.GraphicFragment;
-import com.bibliogames.nygar.bibliogames.presenter.fragment.LibraryFragment;
-import com.bibliogames.nygar.bibliogames.presenter.fragment.ProfileFragment;
-import com.bibliogames.nygar.bibliogames.presenter.interfaces.MainActivityInterface;
-import com.bibliogames.nygar.bibliogames.presenter.utils.CustomSharedPreferences;
+import com.bibliogames.nygar.bibliogames.view.fragment.AddFriendFragment;
+import com.bibliogames.nygar.bibliogames.view.fragment.DetailsFriendFragment;
+import com.bibliogames.nygar.bibliogames.view.fragment.DetailsGamesFragment;
+import com.bibliogames.nygar.bibliogames.view.fragment.FriendFragment;
+import com.bibliogames.nygar.bibliogames.view.fragment.GraphicFragment;
+import com.bibliogames.nygar.bibliogames.view.fragment.LibraryFragment;
+import com.bibliogames.nygar.bibliogames.view.fragment.ProfileFragment;
+import com.bibliogames.nygar.bibliogames.view.interfaces.MainActivityInterface;
+import com.bibliogames.nygar.bibliogames.view.utils.CustomSharedPreferences;
 import com.luseen.luseenbottomnavigation.BottomNavigation.BottomNavigationItem;
 import com.luseen.luseenbottomnavigation.BottomNavigation.BottomNavigationView;
 

@@ -1,4 +1,4 @@
-package com.bibliogames.nygar.bibliogames.presenter.fragment;
+package com.bibliogames.nygar.bibliogames.view.fragment;
 
 
 import android.content.Context;
@@ -14,8 +14,8 @@ import com.bibliogames.nygar.bibliogames.R;
 import com.bibliogames.nygar.bibliogames.model.Games;
 import com.bibliogames.nygar.bibliogames.services.ApiRestImpl;
 import com.bibliogames.nygar.bibliogames.services.serviceinterface.UserGamesServiceInterface;
-import com.bibliogames.nygar.bibliogames.presenter.adapter.DetailsFriendsAdapter;
-import com.bibliogames.nygar.bibliogames.presenter.interfaces.MainActivityInterface;
+import com.bibliogames.nygar.bibliogames.view.adapter.DetailsFriendsAdapter;
+import com.bibliogames.nygar.bibliogames.view.interfaces.MainActivityInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ import butterknife.OnClick;
 
 /**
  * Clase {@link Fragment} fragment usado para la pantalla de ver los juegos de los amigos
- * Esta clase se usa en {@link com.bibliogames.nygar.bibliogames.presenter.activity.MainActivity}
+ * Esta clase se usa en {@link com.bibliogames.nygar.bibliogames.view.activity.MainActivity}
  */
 public class DetailsFriendFragment extends Fragment implements UserGamesServiceInterface{
 

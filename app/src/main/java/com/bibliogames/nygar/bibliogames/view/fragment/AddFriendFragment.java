@@ -1,4 +1,4 @@
-package com.bibliogames.nygar.bibliogames.presenter.fragment;
+package com.bibliogames.nygar.bibliogames.view.fragment;
 
 
 import android.content.Context;
@@ -20,9 +20,9 @@ import com.bibliogames.nygar.bibliogames.model.User;
 import com.bibliogames.nygar.bibliogames.services.ApiRestImpl;
 import com.bibliogames.nygar.bibliogames.services.serviceinterface.AddFriendServiceInterface;
 import com.bibliogames.nygar.bibliogames.services.serviceinterface.GetNoFriendsServiceInterface;
-import com.bibliogames.nygar.bibliogames.presenter.adapter.AddFriendsAdapter;
-import com.bibliogames.nygar.bibliogames.presenter.interfaces.MainActivityInterface;
-import com.bibliogames.nygar.bibliogames.presenter.utils.CustomSharedPreferences;
+import com.bibliogames.nygar.bibliogames.view.adapter.AddFriendsAdapter;
+import com.bibliogames.nygar.bibliogames.view.interfaces.MainActivityInterface;
+import com.bibliogames.nygar.bibliogames.view.utils.CustomSharedPreferences;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ import butterknife.OnClick;
 
 /**
  * Clase {@link Fragment} fragment usado para la pantalla de add Friend
- * Esta clase se usa en {@link com.bibliogames.nygar.bibliogames.presenter.activity.MainActivity}
+ * Esta clase se usa en {@link com.bibliogames.nygar.bibliogames.view.activity.MainActivity}
  */
 public class AddFriendFragment extends Fragment implements GetNoFriendsServiceInterface, AddFriendServiceInterface {
 
@@ -94,7 +94,7 @@ public class AddFriendFragment extends Fragment implements GetNoFriendsServiceIn
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         builder.setMessage(R.string.add_friends_dialog_message)
-                .setTitle(R.string.add_friends_dialog_title);
+                .setTitle(R.string.confirm);
 
         builder.setPositiveButton(R.string.ok, (dialog, id) -> {
             addFriend(sUseraux.getId());

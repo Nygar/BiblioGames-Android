@@ -4,7 +4,8 @@
     <color name="colorPrimary">#E84242</color>
     <color name="colorPrimaryDark">#DB2932</color>
     <color name="colorAccent">#0171BD</color>
-    <color name="background">#edebee</color>
+    <!--<color name="background">#edebee</color>-->
+    <color name="background">@color/white</color>
     <color name="dark_accent_color">#013d65</color>
 
     //BottonBarColors

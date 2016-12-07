@@ -1,9 +1,10 @@
-package com.bibliogames.nygar.bibliogames.presenter.fragment;
+package com.bibliogames.nygar.bibliogames.view.fragment;
 
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,9 +16,9 @@ import com.bibliogames.nygar.bibliogames.model.ApiResponse;
 import com.bibliogames.nygar.bibliogames.model.User;
 import com.bibliogames.nygar.bibliogames.services.ApiRestImpl;
 import com.bibliogames.nygar.bibliogames.services.serviceinterface.DeleteFriendServiceInterface;
-import com.bibliogames.nygar.bibliogames.presenter.adapter.FriendsAdapter;
-import com.bibliogames.nygar.bibliogames.presenter.interfaces.MainActivityInterface;
-import com.bibliogames.nygar.bibliogames.presenter.utils.CustomSharedPreferences;
+import com.bibliogames.nygar.bibliogames.view.adapter.FriendsAdapter;
+import com.bibliogames.nygar.bibliogames.view.interfaces.MainActivityInterface;
+import com.bibliogames.nygar.bibliogames.view.utils.CustomSharedPreferences;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ import butterknife.OnClick;
 
 /**
  * Clase {@link Fragment} fragment usado para la pantalla de mostrar los amigos
- * Esta clase se usa en {@link com.bibliogames.nygar.bibliogames.presenter.activity.MainActivity}
+ * Esta clase se usa en {@link com.bibliogames.nygar.bibliogames.view.activity.MainActivity}
  */
 public class FriendFragment extends Fragment implements DeleteFriendServiceInterface{
 
@@ -95,14 +96,28 @@ public class FriendFragment extends Fragment implements DeleteFriendServiceInter
 
     public void updateFragment(List<User> nListFriends){
         users=nListFriends;
-        adapter.updateAdapter(users);
+        if(adapter!=null) {
+            adapter.updateAdapter(users);
+        }
     }
 
     private void deleteFriend(User friend){
-        CustomSharedPreferences preferences = new CustomSharedPreferences(getContext());
-        User user = preferences.getCurrentUser();
-        mainActivityInterface.loadOn();
-        new ApiRestImpl(this, getContext()).postDeleteFriend(user.getId(),friend.getId());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        builder.setMessage(R.string.delete_friend_dialog_message)
+                .setTitle(R.string.confirm);
+
+        builder.setPositiveButton(R.string.ok, (dialog, id) -> {
+            CustomSharedPreferences preferences = new CustomSharedPreferences(getContext());
+            User user = preferences.getCurrentUser();
+            mainActivityInterface.loadOn();
+            new ApiRestImpl(this, getContext()).postDeleteFriend(user.getId(),friend.getId());
+
+            dialog.dismiss();
+        });
+        builder.setNegativeButton(R.string.cancel, (dialog, id) -> dialog.dismiss());
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     /**

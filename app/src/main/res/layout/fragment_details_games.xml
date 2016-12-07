@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="com.bibliogames.nygar.bibliogames.presenter.fragment.DetailsGamesFragment">
+        tools:context="com.bibliogames.nygar.bibliogames.view.fragment.DetailsGamesFragment">
 
         <include layout="@layout/view_toolbar_back" />
 
@@ -53,12 +53,12 @@
                         android:layout_alignParentRight="true"
                         android:padding="15dp"
                         >
-                    <android.support.design.widget.FloatingActionButton
-                        android:id="@+id/details_games_fab"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_add_a_photo_white_24dp"
-                        />
+                        <android.support.design.widget.FloatingActionButton
+                            android:id="@+id/details_games_fab"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_add_a_photo_white_24dp"
+                            />
                     </LinearLayout>
                 </RelativeLayout>
 
@@ -83,17 +83,22 @@
                             android:layout_marginRight="16dp"
                             android:src="@drawable/ic_description_black_24dp" />
 
-                        <EditText
-                            android:id="@+id/details_games_editTextTitle"
-                            style="@style/customEditText"
+                        <android.support.design.widget.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginEnd="15dp"
-                            android:layout_marginRight="15dp"
-                            android:hint="@string/tittleGame"
-                            android:singleLine="true"
-                            />
+                            >
+                            <EditText
+                                android:id="@+id/details_games_editTextTitle"
+                                style="@style/customEditText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="15dp"
+                                android:layout_marginRight="15dp"
+                                android:hint="@string/tittleGame"
+                                android:singleLine="true"
+                                />
+                        </android.support.design.widget.TextInputLayout>
                     </LinearLayout>
 
                     <!--TextView Shopping-->
@@ -111,17 +116,22 @@
                             android:layout_marginRight="16dp"
                             android:src="@drawable/ic_shopping_cart_black_24dp" />
 
-                        <EditText
-                            android:id="@+id/details_games_editTextBuyPrice"
-                            style="@style/customEditText"
+                        <android.support.design.widget.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginEnd="15dp"
-                            android:layout_marginRight="15dp"
-                            android:hint="@string/buyPriceGame"
-                            android:inputType="numberDecimal"
-                            android:singleLine="true"/>
+                            >
+                            <EditText
+                                android:id="@+id/details_games_editTextBuyPrice"
+                                style="@style/customEditText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="15dp"
+                                android:layout_marginRight="15dp"
+                                android:hint="@string/buyPriceGame"
+                                android:inputType="numberDecimal"
+                                android:singleLine="true"/>
+                        </android.support.design.widget.TextInputLayout>
                     </LinearLayout>
 
                     <!--TextView Games-->

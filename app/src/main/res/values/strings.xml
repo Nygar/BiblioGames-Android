@@ -14,6 +14,10 @@
     <string name="loading">Comprobando</string>
     <string name="no_network">Se ha producido un error de conexion</string>
     <string name="all">Todos</string>
+    <string name="confirm">Confirmar</string>
+
+    //Library
+    <string name="delete_game_dialog_message">¿Desea eliminar este juego?</string>
 
     //DetailsGames
     <string name="current_update_game">current_update_game</string>
@@ -23,11 +27,13 @@
     <string name="saveButton">Guardar</string>
     <string name="noTittle">Titulo No Seleccionado</string>
 
+    //FriendsList
+    <string name="delete_friend_dialog_message">¿Desea eliminar este amigo?</string>
+
     //AddFriend
     <string name="searchfriend">Buscar Usuario</string>
     //Dialog addFriends
     <string name="add_friends_dialog_message">¿Desea agregar a este usuario a su lista de amigos?</string>
-    <string name="add_friends_dialog_title">Confirmar</string>
 
     //Profile/Login
     <string name="noText">Vacio</string>
@@ -42,6 +48,7 @@
     <string name="login">Entrar</string>
     <string name="badLogin">Usuario o contraseña incorrectos</string>
     <string name="noSamePass">Las contraseñas no coinciden</string>
+    <string name="update_user_dialog_message">¿Está seguro que desea actuializar su usuario?</string>
 
     //Gallery
     <string name="no_image_picked">No has seleccionado ninguna imagen</string>
@@ -52,4 +59,10 @@
 
     //Graphics
     <string name="graphic_total">Total Gastado</string>
+
+    //EdittextValidations
+    <string name="empty_validation">El campo no puede estar vacio</string>
+    <string name="length_validation">Debe de tener al menos 3 caracteres</string>
+    <string name="length_pass_validation">Debe de tener al menos 6 caracteres</string>
+    <string name="pass_confirm_validation">La password debe de coincidir</string>
 </resources>
