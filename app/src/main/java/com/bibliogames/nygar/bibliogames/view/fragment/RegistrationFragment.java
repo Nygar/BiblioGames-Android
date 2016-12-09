@@ -18,6 +18,8 @@ import com.bibliogames.nygar.bibliogames.view.interfaces.LoginActivityInterface;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.ConfirmPassword;
+import com.mobsandgeeks.saripaar.annotation.Length;
+import com.mobsandgeeks.saripaar.annotation.Min;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 import com.mobsandgeeks.saripaar.annotation.Password;
 
@@ -35,11 +37,12 @@ import butterknife.OnClick;
 public class RegistrationFragment extends Fragment implements RegisterServiceInterface,Validator.ValidationListener {
 
     @NotEmpty(messageResId = R.string.empty_validation)
+    @Length(min = 3, messageResId = R.string.length_validation)
     @BindView(R.id.etUserNick)
     EditText nick;
 
     @NotEmpty(messageResId = R.string.empty_validation)
-    @Password(min = 6, messageResId = R.string.length_pass_validation)
+    @Password(messageResId = R.string.length_pass_validation)
     @BindView(R.id.etPass)
     EditText pass;
 
@@ -47,8 +50,12 @@ public class RegistrationFragment extends Fragment implements RegisterServiceInt
     @ConfirmPassword(messageResId = R.string.pass_confirm_validation)
     @BindView(R.id.etCorfim)
     EditText pass2;
+
+    @NotEmpty(messageResId = R.string.empty_validation)
+    @Length(min = 3, messageResId = R.string.length_validation)
     @BindView(R.id.etName)
     EditText name;
+
     @BindString(R.string.no_network)
     String noNetString;
     @BindString(R.string.noSamePass)
@@ -117,7 +124,7 @@ public class RegistrationFragment extends Fragment implements RegisterServiceInt
     }
 
     /**
-     * Implementacion de {@link com.mobsandgeeks.saripaar.Validator.ValidationListener}
+     * Implementacion de {@link Validator.ValidationListener}
      */
     @Override
     public void onValidationSucceeded() {

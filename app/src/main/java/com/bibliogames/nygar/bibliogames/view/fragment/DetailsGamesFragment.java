@@ -31,6 +31,11 @@ import com.bibliogames.nygar.bibliogames.view.utils.BitmapEncode;
 import com.bibliogames.nygar.bibliogames.view.utils.CustomSharedPreferences;
 import com.bibliogames.nygar.bibliogames.view.utils.ParseXML;
 import com.jaredrummler.materialspinner.MaterialSpinner;
+import com.mobsandgeeks.saripaar.ValidationError;
+import com.mobsandgeeks.saripaar.Validator;
+import com.mobsandgeeks.saripaar.annotation.Length;
+import com.mobsandgeeks.saripaar.annotation.Min;
+import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
@@ -53,10 +58,13 @@ import static android.app.Activity.RESULT_OK;
  * Clase {@link Fragment} fragment usado para la pantalla de add/update games
  * Esta clase se usa en {@link com.bibliogames.nygar.bibliogames.view.activity.MainActivity}
  */
-public class DetailsGamesFragment extends Fragment implements UpdateGameServiceInterface,AddGameServiceInterface {
+public class DetailsGamesFragment extends Fragment implements UpdateGameServiceInterface,AddGameServiceInterface,Validator.ValidationListener {
 
     @BindView(R.id.image_details_games_cover)
     ImageView ivCover;
+
+    @NotEmpty(messageResId = R.string.empty_validation)
+    @Length(min = 3, messageResId = R.string.length_validation)
     @BindView(R.id.details_games_editTextTitle)
     EditText tvTitle;
     @BindView(R.id.details_games_editTextBuyPrice)
@@ -81,6 +89,7 @@ public class DetailsGamesFragment extends Fragment implements UpdateGameServiceI
     private static final int RESULT_LOAD_IMG = 1;
 
     private Games backupGame;
+    private Validator validator;
 
     private List<Console> categoryConsole;
     private Console selectedConsoleSpinner;
@@ -129,6 +138,8 @@ public class DetailsGamesFragment extends Fragment implements UpdateGameServiceI
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_details_games, container, false);
         ButterKnife.bind(this,view);
+        validator = new Validator(this);
+        validator.setValidationListener(this);
 
         inicializeSpinner();
         setTexts();
@@ -179,30 +190,7 @@ public class DetailsGamesFragment extends Fragment implements UpdateGameServiceI
 
     }
 
-    /**
-     * onClickListeners
-     */
-    @OnClick(R.id.button_toolbar_back)
-    public void backOnClickListener(){
-        mainActivityInterface.onBack();
-    }
-
-    @OnClick(R.id.layout_details_games_date)
-    public void textDateBuy(){
-        final Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DATE,-1);
-        DatePickerDialog datePickerDialog= new DatePickerDialog(getContext(), (view, year, monthOfYear, dayOfMonth) -> {
-            tvDate.setText(dayOfMonth+"/"+monthOfYear+"/"+year);
-
-            date.set(year,monthOfYear,dayOfMonth);
-
-        },cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH));
-        datePickerDialog.getDatePicker().setMaxDate(Calendar.getInstance().getTimeInMillis());
-        datePickerDialog.show();
-    }
-
-    @OnClick(R.id.button_details_games_save)
-    public void saveButtonOnClickListener(){
+    private void saveGame(){
         String title=tvTitle.getText().toString();
         String price=tvBuyPrice.getText().toString();
 
@@ -245,6 +233,33 @@ public class DetailsGamesFragment extends Fragment implements UpdateGameServiceI
             }
         }
 
+    }
+
+    /**
+     * onClickListeners
+     */
+    @OnClick(R.id.button_toolbar_back)
+    public void backOnClickListener(){
+        mainActivityInterface.onBack();
+    }
+
+    @OnClick(R.id.layout_details_games_date)
+    public void textDateBuy(){
+        final Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE,-1);
+        DatePickerDialog datePickerDialog= new DatePickerDialog(getContext(), (view, year, monthOfYear, dayOfMonth) -> {
+            tvDate.setText(dayOfMonth+"/"+monthOfYear+"/"+year);
+
+            date.set(year,monthOfYear,dayOfMonth);
+
+        },cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.getDatePicker().setMaxDate(Calendar.getInstance().getTimeInMillis());
+        datePickerDialog.show();
+    }
+
+    @OnClick(R.id.button_details_games_save)
+    public void saveButtonOnClickListener(){
+        validator.validate();
     }
 
     @OnClick(R.id.details_games_fab)
@@ -326,5 +341,26 @@ public class DetailsGamesFragment extends Fragment implements UpdateGameServiceI
     public void addGameFail() {
         mainActivityInterface.loadOff();
         Toast.makeText(getContext(), noNetString, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Implementacion de {@link Validator.ValidationListener}
+     */
+    @Override
+    public void onValidationSucceeded() {
+        saveGame();
+    }
+
+    @Override
+    public void onValidationFailed(List<ValidationError> errors) {
+        for (ValidationError error : errors) {
+            View view = error.getView();
+            String message = error.getCollatedErrorMessage(getContext());
+
+            // Display error messages
+            if (view instanceof EditText) {
+                ((EditText) view).setError(message);
+            }
+        }
     }
 }

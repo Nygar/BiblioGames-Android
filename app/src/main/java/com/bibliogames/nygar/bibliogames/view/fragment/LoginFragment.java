@@ -15,6 +15,14 @@ import com.bibliogames.nygar.bibliogames.services.ApiRestImpl;
 import com.bibliogames.nygar.bibliogames.services.serviceinterface.LoginServiceInterface;
 import com.bibliogames.nygar.bibliogames.view.interfaces.LoginActivityInterface;
 import com.dd.CircularProgressButton;
+import com.mobsandgeeks.saripaar.ValidationError;
+import com.mobsandgeeks.saripaar.Validator;
+import com.mobsandgeeks.saripaar.annotation.Length;
+import com.mobsandgeeks.saripaar.annotation.Min;
+import com.mobsandgeeks.saripaar.annotation.NotEmpty;
+import com.mobsandgeeks.saripaar.annotation.Password;
+
+import java.util.List;
 
 import butterknife.BindString;
 import butterknife.BindView;
@@ -27,12 +35,18 @@ import butterknife.OnClick;
  * localizada en {@link com.bibliogames.nygar.bibliogames.view.activity.LoginActivity}
  */
 
-public class LoginFragment extends Fragment implements LoginServiceInterface{
+public class LoginFragment extends Fragment implements LoginServiceInterface, Validator.ValidationListener{
 
+    @NotEmpty(messageResId = R.string.empty_validation)
+    @Length(min = 3, messageResId = R.string.length_validation)
     @BindView(R.id.etUserName)
     EditText nick;
+
+    @NotEmpty(messageResId = R.string.empty_validation)
+    @Password(messageResId = R.string.length_pass_validation)
     @BindView(R.id.etPass)
     EditText pass;
+
     @BindView(R.id.btnSingIn)
     CircularProgressButton loginButton;
     @BindString(R.string.no_network)
@@ -41,6 +55,7 @@ public class LoginFragment extends Fragment implements LoginServiceInterface{
     //Propiedades
     private LoginActivityInterface loginInterface;
     private LoginServiceInterface loginServiceInterface;
+    private Validator validator;
 
     //Constructor
     public LoginFragment() {
@@ -64,21 +79,25 @@ public class LoginFragment extends Fragment implements LoginServiceInterface{
                              Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_login, container, false);
         ButterKnife.bind(this,view);
+        validator = new Validator(this);
+        validator.setValidationListener(this);
         return view;
     }//Fin on create view
+
+    private void loginUser(){
+        //loginInterface.loadOn();
+        loginButton.setProgress(0);
+        loginButton.setProgress(1);
+        loginButton.setIndeterminateProgressMode(true);
+        new ApiRestImpl(loginServiceInterface,getContext()).postLogin(nick.getText().toString(),pass.getText().toString());
+    }
 
     /**
      * onClickListeners
      */
     @OnClick(R.id.btnSingIn)
     public void loginOnClickListener(){
-        //Lamamos a el AsyncLogin
-        //loginInterface.loadOn();
-        loginButton.setProgress(0);
-        loginButton.setProgress(1);
-        loginButton.setIndeterminateProgressMode(true);
-        new ApiRestImpl(loginServiceInterface,getContext()).postLogin(nick.getText().toString(),pass.getText().toString());
-
+        validator.validate();
     }
 
     @OnClick(R.id.btnRegister)
@@ -104,5 +123,26 @@ public class LoginFragment extends Fragment implements LoginServiceInterface{
     public void loginFail() {
         loginButton.setProgress(-1);
         Toast.makeText(getContext(),noNetString,Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Implementacion de {@link Validator.ValidationListener}
+     */
+    @Override
+    public void onValidationSucceeded() {
+        loginUser();
+    }
+
+    @Override
+    public void onValidationFailed(List<ValidationError> errors) {
+        for (ValidationError error : errors) {
+            View view = error.getView();
+            String message = error.getCollatedErrorMessage(getContext());
+
+            // Display error messages
+            if (view instanceof EditText) {
+                ((EditText) view).setError(message);
+            }
+        }
     }
 }//Fin clase

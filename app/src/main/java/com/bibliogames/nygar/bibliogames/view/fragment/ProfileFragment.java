@@ -24,9 +24,17 @@ import com.bibliogames.nygar.bibliogames.services.serviceinterface.UpdateUserSer
 import com.bibliogames.nygar.bibliogames.view.interfaces.MainActivityInterface;
 import com.bibliogames.nygar.bibliogames.view.utils.BitmapEncode;
 import com.bibliogames.nygar.bibliogames.view.utils.CustomSharedPreferences;
+import com.mobsandgeeks.saripaar.ValidationError;
+import com.mobsandgeeks.saripaar.Validator;
+import com.mobsandgeeks.saripaar.annotation.Length;
+import com.mobsandgeeks.saripaar.annotation.Min;
+import com.mobsandgeeks.saripaar.annotation.NotEmpty;
+import com.mobsandgeeks.saripaar.annotation.Password;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 import butterknife.BindString;
 import butterknife.BindView;
@@ -40,16 +48,26 @@ import static android.app.Activity.RESULT_OK;
  * Clase {@link Fragment} usada para la pantalla de perfil del usuario
  * Esta clase de usa en {@link com.bibliogames.nygar.bibliogames.view.activity.MainActivity}
  */
-public class ProfileFragment extends Fragment implements UpdateUserServiceInterface {
+public class ProfileFragment extends Fragment implements UpdateUserServiceInterface, Validator.ValidationListener {
 
     @BindView(R.id.iv_profile_avatar)
     CircleImageView ivAvatar;
+
+    @NotEmpty(messageResId = R.string.empty_validation)
+    @Length(min = 3, messageResId = R.string.length_validation)
     @BindView(R.id.etUserNick)
     EditText etNick;
+
+    @NotEmpty(messageResId = R.string.empty_validation)
+    @Password(messageResId = R.string.length_pass_validation)
     @BindView(R.id.etPass)
     EditText etPass;
+
+    @NotEmpty(messageResId = R.string.empty_validation)
+    @Length(min = 3, messageResId = R.string.length_validation)
     @BindView(R.id.etName)
     EditText etName;
+
     @BindString(R.string.noText)
     String noTittle;
     @BindString(R.string.user_save)
@@ -70,6 +88,8 @@ public class ProfileFragment extends Fragment implements UpdateUserServiceInterf
     private User user;
     private User updateUser;
 
+    private Validator validator;
+
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -85,6 +105,8 @@ public class ProfileFragment extends Fragment implements UpdateUserServiceInterf
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_profile, container, false);
         ButterKnife.bind(this,view);
+        validator = new Validator(this);
+        validator.setValidationListener(this);
         inicializeFragment();
         return view;
     }
@@ -131,12 +153,7 @@ public class ProfileFragment extends Fragment implements UpdateUserServiceInterf
         new ApiRestImpl(this,getContext()).postUpdateUser(user.getId(),updateUser.getNick(),updateUser.getPass(),updateUser.getName(),updateUser.getAvatar());
     }
 
-    /**
-     * onCLickListeners
-     */
-    @OnClick(R.id.btnSave)
-    public void saveButtonOnClickListener(){
-
+    private void confirmUpdate(){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         builder.setMessage(R.string.update_user_dialog_message)
@@ -149,7 +166,14 @@ public class ProfileFragment extends Fragment implements UpdateUserServiceInterf
         builder.setNegativeButton(R.string.cancel, (dialog, id) -> dialog.dismiss());
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
 
+    /**
+     * onCLickListeners
+     */
+    @OnClick(R.id.btnSave)
+    public void saveButtonOnClickListener(){
+        validator.validate();
     }
 
     @OnClick(R.id.btnCloseSession)
@@ -217,5 +241,26 @@ public class ProfileFragment extends Fragment implements UpdateUserServiceInterf
     public void updateUserFail() {
         mainActivityInterface.loadOff();
         Toast.makeText(getContext(), noNetString, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Implementacion de {@link Validator.ValidationListener}
+     */
+    @Override
+    public void onValidationSucceeded() {
+        confirmUpdate();
+    }
+
+    @Override
+    public void onValidationFailed(List<ValidationError> errors) {
+        for (ValidationError error : errors) {
+            View view = error.getView();
+            String message = error.getCollatedErrorMessage(getContext());
+
+            // Display error messages
+            if (view instanceof EditText) {
+                ((EditText) view).setError(message);
+            }
+        }
     }
 }
