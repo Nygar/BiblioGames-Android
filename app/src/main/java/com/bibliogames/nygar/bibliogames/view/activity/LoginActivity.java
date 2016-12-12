@@ -12,6 +12,7 @@ import com.bibliogames.nygar.bibliogames.services.ApiRestImpl;
 import com.bibliogames.nygar.bibliogames.services.serviceinterface.LoginServiceInterface;
 import com.bibliogames.nygar.bibliogames.view.fragment.LoginFragment;
 import com.bibliogames.nygar.bibliogames.view.fragment.RegistrationFragment;
+import com.bibliogames.nygar.bibliogames.view.fragment.SplashFragment;
 import com.bibliogames.nygar.bibliogames.view.interfaces.LoginActivityInterface;
 import com.bibliogames.nygar.bibliogames.view.utils.CustomSharedPreferences;
 
@@ -49,11 +50,13 @@ public class LoginActivity extends BaseActivity implements LoginActivityInterfac
         preferences = new CustomSharedPreferences(this);
         final LoginServiceInterface loginServiceInterface = this;
 
+        addFragment(R.id.loginFragmentContainer,new SplashFragment());
+
         //Si no hay usuario o no existe conexion en sharedPreferences vamos al login
         User currentUser =preferences.getCurrentUser();
         if(currentUser==null){
             loadOff();
-            addFragment(R.id.loginFragmentContainer,new LoginFragment());
+            replaceFragment(R.id.loginFragmentContainer,new LoginFragment());
 
         }else{
             //Sino comprobamos si el usuario esta en la base de datos
@@ -137,7 +140,7 @@ public class LoginActivity extends BaseActivity implements LoginActivityInterfac
         Toast.makeText(this,badLogin,Toast.LENGTH_SHORT).show();
 
         preferences.clearUser();
-        addFragment(R.id.loginFragmentContainer,new LoginFragment());
+        replaceFragment(R.id.loginFragmentContainer,new LoginFragment());
     }
 
 }//Finclase

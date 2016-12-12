@@ -59,4 +59,9 @@
         <item name="android:textAllCaps">true</item>
     </style>
 
+    //SplashProgressBar
+    <style name="splashProgress">
+        <item name="colorAccent">@color/white</item>
+    </style>
+
 </resources>
